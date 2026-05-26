@@ -12,7 +12,10 @@ load_dotenv()
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-model = genai.GenerativeModel("gemini-2.5-flash")
+generation_config = {
+    "temperature": 0.4,"max_output_tokens": 150,
+}
+model = genai.GenerativeModel("gemini-2.5-flash",generation_config=generation_config)
 
 
 def generate_reply(phone, business_id, user_message):
